@@ -210,10 +210,73 @@ When selecting a synthetic data generation approach, several factors should be c
 * Specific Use Case Requirements: Different use cases may have unique requirements. For instance, generating synthetic clinical records for trial simulations may benefit from VAEs, while creating diverse training datasets for diagnostic models might require data augmentation techniques.
 By considering these factors, users can choose the most suitable approach for their specific needs, leveraging the strengths of each method to optimize their healthcare AI projects.
 
+
+
+---
+
+# Synthetic Data Generation on Oracle OCI
+This notebook [[oci_syntheticdatageneration_unstructured.ipynb](https://github.com/curiosityexplorer/syntheticdata/blob/main/oci_syntheticdatageneration_unstructured.ipynb)] demonstrates the process of generating synthetic images using a Generative Adversarial Network (GAN) on Oracle Cloud Infrastructure (OCI). The main steps involve setting up the environment, defining and training the GAN, and managing data storage using OCI Object Storage.
+
+## Main Steps
+Following are the main steps - 
+
+### Environment Setup:
+* Install Libraries: Install necessary libraries (torch, torchvision, oci) for building neural networks and interacting with OCI.
+* Imports: Import libraries for neural networks, image processing, and OCI interaction.
+
+### Define GAN Models:
+* Generator Model: Defined to generate synthetic images from random noise. Uses transposed convolutions and ReLU activations.
+	* Input: Noise vector (nz).
+	* Output: Synthetic images.
+* Discriminator Model: Defined to classify images as real or fake. Uses convolutions and Leaky ReLU activations.
+	* Input: Images (real or synthetic).
+	* Output: Probability score indicating real or fake.
+
+### Set Training Parameters:
+* Noise Vector Size (nz): 100
+* Batch Size: 64
+* Number of Epochs: 50
+* Images to Generate: 20,000
+
+### Data Preparation:
+* Define Transformations: Resize, normalize images for training.
+* Create Dataset and DataLoader: Load images from a dictionary and prepare them for training.
+
+### Model Initialization:
+* Initialize Models: Create instances of the Generator and Discriminator, and move them to the GPU if available.
+* Define Loss Function and Optimizers: Use Binary Cross-Entropy loss and Adam optimizer for both models.
+
+### OCI Setup:
+* Authentication: Use resource principal for OCI authentication.
+* Object Storage Client: Initialize client for interacting with OCI Object Storage.
+* Bucket Management: Check if the target bucket exists; create it if it doesn’t.
+
+### Training Loop:
+* Update Discriminator: Train the Discriminator with real and synthetic images.
+* Update Generator: Train the Generator to produce more realistic images.
+* Save Images: Periodically save generated images to a local directory and upload them to OCI Object Storage.
+* Stop Condition: Stop training when the desired number of images is generated.
+
+### Count Generated Images:
+* Function to Count Images: Count the number of generated images stored in the OCI bucket.
+
+## Inputs and Outputs
+* Inputs:
+	* Noise vector for generating synthetic images.
+	* Real images for training the Discriminator.
+	* OCI credentials for accessing and storing data in OCI Object Storage.
+* Outputs:
+	* Generated synthetic images stored locally and uploaded to OCI Object Storage.
+	* Training progress logs including loss values for both Generator and Discriminator.
+	* Final count of generated images in OCI Object Storage.
+* Final Output
+	* Generated Images: 20,000 synthetic images stored in the specified OCI Object Storage bucket.
+	* Training Logs: Printed logs showing the progress of the GAN training, including loss values and discriminator outputs.
+	* Bucket Content: Verification of the number of generated images stored in the OCI bucket.
+
+By following these steps, the notebook successfully trains a GAN to generate synthetic images and manages the data storage and retrieval process using Oracle Cloud Infrastructure.
+
 ---
 ## Conclusion
 Synthetic data offers immense potential for improving healthcare research and patient outcomes, but it requires careful consideration of biases, privacy, and regulatory challenges. Establishing a digital chain of custody and implementing privacy-preserving techniques like differential privacy are crucial for ensuring data integrity and security. Collaborative efforts between healthcare providers, researchers, regulatory agencies, and technology developers are essential to develop comprehensive guidelines and best practices for the responsible use of synthetic data in healthcare.
 By addressing these challenges and fostering transparency, synthetic data can be a powerful tool in advancing medical research, optimizing treatment plans, and improving patient care while protecting privacy and maintaining ethical standards.
-
----
-
