@@ -210,10 +210,7 @@ When selecting a synthetic data generation approach, several factors should be c
 * Specific Use Case Requirements: Different use cases may have unique requirements. For instance, generating synthetic clinical records for trial simulations may benefit from VAEs, while creating diverse training datasets for diagnostic models might require data augmentation techniques.
 By considering these factors, users can choose the most suitable approach for their specific needs, leveraging the strengths of each method to optimize their healthcare AI projects.
 
----
-## Conclusion
-Synthetic data offers immense potential for improving healthcare research and patient outcomes, but it requires careful consideration of biases, privacy, and regulatory challenges. Establishing a digital chain of custody and implementing privacy-preserving techniques like differential privacy are crucial for ensuring data integrity and security. Collaborative efforts between healthcare providers, researchers, regulatory agencies, and technology developers are essential to develop comprehensive guidelines and best practices for the responsible use of synthetic data in healthcare.
-By addressing these challenges and fostering transparency, synthetic data can be a powerful tool in advancing medical research, optimizing treatment plans, and improving patient care while protecting privacy and maintaining ethical standards.
+
 
 ---
 
@@ -278,3 +275,8 @@ Following are the main steps -
 	* Bucket Content: Verification of the number of generated images stored in the OCI bucket.
 
 By following these steps, the notebook successfully trains a GAN to generate synthetic images and manages the data storage and retrieval process using Oracle Cloud Infrastructure.
+
+---
+## Conclusion
+Synthetic data offers immense potential for improving healthcare research and patient outcomes, but it requires careful consideration of biases, privacy, and regulatory challenges. Establishing a digital chain of custody and implementing privacy-preserving techniques like differential privacy are crucial for ensuring data integrity and security. Collaborative efforts between healthcare providers, researchers, regulatory agencies, and technology developers are essential to develop comprehensive guidelines and best practices for the responsible use of synthetic data in healthcare.
+By addressing these challenges and fostering transparency, synthetic data can be a powerful tool in advancing medical research, optimizing treatment plans, and improving patient care while protecting privacy and maintaining ethical standards.
